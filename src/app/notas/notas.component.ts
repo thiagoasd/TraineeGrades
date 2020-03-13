@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { nota } from './nota.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-notas',
@@ -7,6 +8,13 @@ import { nota } from './nota.model';
   styleUrls: ['./notas.component.css']
 })
 export class NotasComponent implements OnInit {
+
+  salario: number;
+  nota1: number;
+  nota2: number;
+  nota3: number;
+  nota4: number;
+  resultado: number = 50;
 
   notas1: Array<nota> = [];
   notas2: Array<nota> = [];
@@ -47,6 +55,30 @@ export class NotasComponent implements OnInit {
     this.notas4.push(tmp);
     tmp = { nota: "C", porcentagem: 1 };
     this.notas4.push(tmp);
+
+  }
+
+  onChange() {
+
+    if (this.salario) {
+      this.resultado = this.salario;
+    }
+
+    if (this.nota1) {
+      this.resultado += (this.resultado * this.nota1 * 0.01);
+    }
+
+    if (this.nota2) {
+      this.resultado += (this.resultado * this.nota2 * 0.01);
+    }
+
+    if (this.nota3) {
+      this.resultado += (this.resultado * this.nota3 * 0.01);
+    }
+
+    if (this.nota4) {
+      this.resultado += (this.resultado * this.nota4 * 0.01);
+    }
 
   }
 
